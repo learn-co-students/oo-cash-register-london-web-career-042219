@@ -9,15 +9,21 @@ attr_accessor :discount, :total, :all_items
     @discount = employee_discount
     @all_items = []
   end
-    
-  def add_item(title, price, quantity=1)
-    @total += (price * quantity)
-    @title = title
-    @price = price
+  
+  def several_items(title, quantity)
     i = 0
     while i < quantity
     @all_items << title
     i += 1 
+    end
+  end
+  
+  def add_item(title, price, quantity=1)
+    @total += (price * quantity)
+    @title = title
+    @price = price
+    if quantity > 0
+    several_items(title, quantity)
     end
   end
   
